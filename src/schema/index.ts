@@ -1,18 +1,16 @@
 import { Query, Mutation, Schema, schemaFactory, Subscription } from '@jokio/graphql-decorator';
-import UserQuery from './user.query';
-import UserMutation from './user.mutation';
-import UserSubscription from './user.subscription';
+import * as music from './music';
 
 @Schema()
 class RootSchema {
 	@Query()
-	UserQuery: UserQuery;
+	MusicQuery: music.Query;
 
-	@Mutation()
-	UserMutation: UserMutation;
+	// @Mutation()
+	// MusicMutation: music.Mutation;
 
-	@Subscription()
-	UserSubscription: UserSubscription;
+	// @Subscription()
+	// MusicSubscription: music.Subscription;
 }
 
 
