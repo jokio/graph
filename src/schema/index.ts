@@ -6,8 +6,8 @@ class RootSchema {
 	@Query()
 	MusicQuery: music.Query;
 
-	// @Mutation()
-	// MusicMutation: music.Mutation;
+	@Mutation()
+	MusicMutation: music.Mutation;
 
 	// @Subscription()
 	// MusicSubscription: music.Subscription;

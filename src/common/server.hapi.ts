@@ -19,9 +19,9 @@ export default function serverHapi(
 
 	const graphqlOptions: HapiPluginOptions = {
 		path,
-		graphqlOptions: request => ({
+		graphqlOptions: async request => ({
 			schema,
-			context: validateAndGetUser(getToken(request)),
+			context: await validateAndGetUser(getToken(request)),
 		}),
 		route: {
 			cors: true,

@@ -10,7 +10,7 @@ function findUser(authToken) {
 	return (tokenValidationResult) => {
 
 		// ... finds user by auth token and return a Promise, rejects in case of an error
-		return { id: 1, nick: 'Ezeki', token: authToken };
+		return { id: 1, nick: 'Ezeki', token: '0341e79f-d0be-41a4-a1f3-6ce901317e13' };
 	};
 }
 

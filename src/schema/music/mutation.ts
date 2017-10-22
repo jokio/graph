@@ -1,30 +1,23 @@
-import { ObjectType, Field, Arg, InputObjectType, EnumType, Value } from '@jokio/graphql-decorator';
+import { ObjectType, Field, Arg, InputObjectType, EnumType, Value, Ctx } from '@jokio/graphql-decorator';
 import { users } from '../../data';
 import { pubsub } from '../../common/pubsub';
-import { UserCreate } from './inputs/user-create.input';
-import { UserRoleType } from './inputs/user-role-type.enum';
+import * as gql from 'graphql';
+import { RestClient } from 'typed-rest-client/RestClient';
 
+const api = new RestClient('Jok.Graph', 'http://x.jok.io');
 
 export class Mutation {
 
-	// @Field({ type: User, description: 'Create a user and return the created user.' })
-	// addUser(
-	// 	@Arg({ name: 'input', nonNull: true }) input: UserCreate,
-	// ) {
-	// 	const newUser: User = {
-	// 		id: (users.length + 1).toString(),
-	// 		name: input.name,
-	// 		email: input.email,
-	// 	};
+	@Field({ type: gql.GraphQLBoolean, description: 'Create a user and return the created user.' })
+	async musicChannelFavorite(
+		@Arg({ name: 'id', nonNull: true }) id: number,
+		@Ctx() context,
+	) {
+		const token = context.currentUser ? context.currentUser.token : null;
+		await api.create(`/music/channel/${id}/favorite?token=${token}`, {});
 
-	// 	users.push(newUser);
-
-	// 	pubsub.publish('userAdded', {
-	// 		userAdded: newUser,
-	// 	});
-
-	// 	return newUser;
-	// }
+		return true;
+	}
 
 	// @Field({ type: User, description: 'Delete a user and return the removed user.' })
 	// deleteUser(

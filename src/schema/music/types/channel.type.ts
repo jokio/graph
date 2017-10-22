@@ -38,10 +38,5 @@ export class Channel {
     createDate?: number
 
     @Field({ type: Track })
-    track?(): Track {
-        return {
-            id: 1,
-            info: 'alleluia'
-        }
-    }
+    track?: Track
 }
