@@ -42,7 +42,7 @@ export default function serverHapi(
 
 	server.connection({
 		host: HOST,
-		port: PORT,
+		port: +PORT,
 	});
 
 	server.register(hapiHeroku);
