@@ -10,11 +10,11 @@ const api = new RestClient('Jok.Graph', 'http://x.jok.io');
 
 
 export class Query {
-	@Field({ type: Channel, pagination: true })
+	@Field({ type: Channel, isList: true })
 	async musicChannels(
 		@Arg({ name: 'offset' }) skip: number = 0,
 		@Arg({ name: 'limit' }) take: number,
-	): Promise<PaginationResponse<Channel[]>> {
+	): Promise<Channel[]> {
 
 		const response = await api.get<Channel[]>('/music/channel/list');
 		if (response.statusCode !== HttpCodes.OK) {
@@ -28,10 +28,13 @@ export class Query {
 
 		take = take || 10;
 
-		return new PaginationResponse(
-			items.length,
-			items.slice(skip || 0, skip + take),
-			new PageInfo(items.length, skip, take)
-		);
+
+		return items.slice(skip || 0, skip + take);
+
+		// return new PaginationResponse(
+		// 	items.length,
+		// 	items.slice(skip || 0, skip + take),
+		// 	new PageInfo(items.length, skip, take)
+		// );
 	}
 }

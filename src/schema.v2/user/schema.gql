@@ -1,0 +1,15 @@
+
+type User {
+  id: Int!
+  name: String
+}
+
+# Reads from the backend
+type Query {
+  users(offset: Int, limit: Int): [User]
+}
+
+
+schema {
+  query: Query
+}

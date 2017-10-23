@@ -1,0 +1,47 @@
+
+type Track {
+  id: Int!
+  info: String
+  duration: Int
+  lyrics: String
+  youtubeVideoId: String
+  imageUrl: String
+}
+
+type Channel {
+  id: Int!
+  name: String!
+  key: String
+  source: String
+  logoUrl: String
+  stars: Int
+  isFeatured: Boolean
+  isOffline: Boolean
+  isFavorite: Boolean
+  offlineDate: Int
+  createDate: Int
+  track: Track
+}
+
+# Reads from the backend
+type Query {
+  musicChannels(offset: Int, limit: Int): [Channel]
+}
+
+# Perform actions over the backend
+type Mutation {
+  # Create a user and return the created user.
+  musicChannelFavorite(id: Int!): Boolean
+}
+
+# Realtime stream from the backend
+type Subscription {
+  musicChannelTrackUpdated: Channel
+}
+
+
+schema {
+  query: Query
+  mutation: Mutation
+  subscription: Subscription
+}

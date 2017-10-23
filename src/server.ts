@@ -1,5 +1,5 @@
 import startGraphQLServer from './common/server.hapi';
-import schema from './schema';
+import schema from './schema.v2';
 
 startGraphQLServer(
 	schema,
