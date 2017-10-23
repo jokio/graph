@@ -12,8 +12,7 @@ install:
 cache:
   directories:
     - node_modules
-    
+
 deploy:
-  provider: heroku
-  api_key: HEROKU_API_KEY
-  strategy: git
+  provider: azure_web_apps
+  verbose: true
