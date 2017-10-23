@@ -2,13 +2,13 @@
 type User {
   id: Int!
   name: String
+  channels: [Channel]
 }
 
 # Reads from the backend
 type Query {
   users(offset: Int, limit: Int): [User]
 }
-
 
 schema {
   query: Query

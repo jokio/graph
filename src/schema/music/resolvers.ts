@@ -1,14 +1,17 @@
-import { HttpCodes } from "typed-rest-client/HttpClient";
-import { RestClient } from "typed-rest-client/RestClient";
 import { pubsub } from '../../common/pubsub';
+import { api, HttpCodes } from '../../common/api';
 
-
-const api = new RestClient('Jok.Graph', 'http://x.jok.io');
-
-
-export const resolvers = {
+export default {
+    Channel: {
+        users: (obj, { offset, limit }, context) => {
+            return [
+                { id: 1 }
+            ]
+        }
+    },
     Query: {
         musicChannels: async (obj, { offset, limit }, context) => {
+            console.log(obj)
             const skip = offset || 0;
             const take = limit || 10;
 

@@ -21,6 +21,7 @@ type Channel {
   offlineDate: Int
   createDate: Int
   track: Track
+  users: [User]
 }
 
 # Reads from the backend

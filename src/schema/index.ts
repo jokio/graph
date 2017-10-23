@@ -1,19 +1,13 @@
-import { Query, Mutation, Schema, schemaFactory, Subscription } from '@jokio/graphql-decorator';
-import * as music from './music';
+import { makeExecutableSchema } from 'graphql-tools';
+import { mergeTypes, mergeResolvers } from 'merge-graphql-schemas';
+import fileLoader from '../common/loader';
 
-@Schema()
-class RootSchema {
-	@Query()
-	MusicQuery: music.Query;
+const typeDefs = fileLoader(__dirname, { recursive: true, patternString: '\.gql' });
+const resolvers = fileLoader(__dirname, { recursive: true, patternString: 'resolvers\.ts' });
 
-	@Mutation()
-	MusicMutation: music.Mutation;
+const executableSchema = makeExecutableSchema({
+    typeDefs: mergeTypes(typeDefs),
+    resolvers: mergeResolvers(resolvers),
+});
 
-	@Subscription()
-	MusicSubscription: music.Subscription;
-}
-
-
-const schema = schemaFactory(RootSchema);
-
-export default schema;
+export default executableSchema;

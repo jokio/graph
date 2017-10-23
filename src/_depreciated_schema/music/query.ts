@@ -1,4 +1,4 @@
-import { List, Field, ObjectType, Ctx, Root, Arg, PaginationResponse } from '@jokio/graphql-decorator';
+import { List, Field, ObjectType, Ctx, Root, Arg, PaginationResponse, OrderBy } from '@jokio/graphql-decorator';
 import { PageInfo } from '@jokio/graphql-decorator/lib/page-info.type';
 import { users } from '../../data';
 import { Channel } from './types/channel.type';
@@ -10,11 +10,12 @@ const api = new RestClient('Jok.Graph', 'http://x.jok.io');
 
 
 export class Query {
-	@Field({ type: Channel, isList: true })
+	@Field({ type: Channel, pagination: true })
 	async musicChannels(
 		@Arg({ name: 'offset' }) skip: number = 0,
 		@Arg({ name: 'limit' }) take: number,
-	): Promise<Channel[]> {
+		@OrderBy() orderBy,
+	): Promise<PaginationResponse<Channel[]>> {
 
 		const response = await api.get<Channel[]>('/music/channel/list');
 		if (response.statusCode !== HttpCodes.OK) {
@@ -29,12 +30,10 @@ export class Query {
 		take = take || 10;
 
 
-		return items.slice(skip || 0, skip + take);
-
-		// return new PaginationResponse(
-		// 	items.length,
-		// 	items.slice(skip || 0, skip + take),
-		// 	new PageInfo(items.length, skip, take)
-		// );
+		return new PaginationResponse(
+			items.length,
+			items.slice(skip || 0, skip + take),
+			new PageInfo(items.length, skip, take)
+		);
 	}
 }
