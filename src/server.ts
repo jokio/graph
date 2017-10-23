@@ -3,6 +3,6 @@ import schema from './schema';
 
 startGraphQLServer(
 	schema,
-	process.env.NODE_ENV === 'production' ? 'test-ssl-app.herokuapp.com' : 'localhost',
+	process.env.NODE_ENV === 'production' ? 'jok-graph.azurewebsites.net' : 'localhost',
 	process.env.PORT || 3000,
 );
