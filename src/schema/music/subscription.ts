@@ -3,17 +3,18 @@ import { withFilter } from 'graphql-subscriptions';
 import { users } from '../../data';
 import { pubsub } from '../../common/pubsub';
 import { GraphQLObjectType } from 'graphql';
+import { Channel } from './types/channel.type';
 
 
 export class Subscription {
 
-	// @Field({ type: User, description: 'Create a user and return the created user.' })
-	// userAdded = {
-	// 	subscribe: (a, b, c, d) => {
-	// 		// console.log(a, b, c);
-	// 		return pubsub.asyncIterator('userAdded');
-	// 	},
-	// };
+	@Field({ type: Channel })
+	musicChannelTrackUpdated = {
+		subscribe: (a, b, c, d) => {
+			// console.log(a, b, c);
+			return pubsub.asyncIterator('musicChannelTrackUpdated');
+		},
+	};
 
 	// @Field({ type: User, description: 'Delete a user and return the removed user.' })
 	// userDeleted = {

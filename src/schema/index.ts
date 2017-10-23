@@ -9,8 +9,8 @@ class RootSchema {
 	@Mutation()
 	MusicMutation: music.Mutation;
 
-	// @Subscription()
-	// MusicSubscription: music.Subscription;
+	@Subscription()
+	MusicSubscription: music.Subscription;
 }
 
 
