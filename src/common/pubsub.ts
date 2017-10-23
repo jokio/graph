@@ -29,7 +29,7 @@ setInterval(x => {
     pubsub.publish('musicChannelTrackUpdated', {
         musicChannelTrackUpdated: channel,
     });
-}, 1000);
+}, 100);
 
 
 // const subscriptionManager = new PubSubEngine({

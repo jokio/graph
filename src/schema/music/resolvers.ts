@@ -10,8 +10,7 @@ export default {
         }
     },
     Query: {
-        musicChannels: async (obj, { offset, limit }, context) => {
-            console.log(obj)
+        musicChannels: async (obj, { offset, limit }, context, info) => {
             const skip = offset || 0;
             const take = limit || 10;
 

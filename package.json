@@ -7,7 +7,6 @@
     "start": "nodemon"
   },
   "dependencies": {
-    "@jokio/graphql-decorator": "0.6.2",
     "apollo-server-hapi": "^1.1.7",
     "cors": "^2.8.4",
     "graphql": "0.11.7",
