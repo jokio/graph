@@ -2,7 +2,7 @@ import startGraphQLServer from './common/server.hapi';
 import schema from './schema';
 
 startGraphQLServer(
-	schema,				// our schema
-	'localhost',			// for GraphiQL subscriptions
-	process.env.PORT || 3000,	// development port
+	schema,
+	process.env.NODE_ENV === 'production' ? 'test-ssl-app.herokuapp.com' : 'localhost',
+	process.env.PORT || 3000,
 );

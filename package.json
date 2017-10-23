@@ -1,5 +1,5 @@
 {
-  "name": "jok-graph",
+  "name": "@jokio/graph",
   "version": "0.1.0",
   "description": "Jok Graph",
   "main": "index.js",
