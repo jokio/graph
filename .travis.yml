@@ -13,7 +13,8 @@ cache:
     - node_modules
 
 before_deploy:
-  tsc
+  - tsc
+  - rm -rf node_modules
 
 deploy:
   provider: azure_web_apps
