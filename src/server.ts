@@ -3,6 +3,6 @@ import schema from './schema';
 
 startGraphQLServer(
 	schema,
-	process.env.NODE_ENV === 'production' ? 'jok-test1.azurewebsites.net' : 'localhost',
+	process.env.NODE_ENV === 'production' ? process.env.DOMAIN : 'localhost',
 	process.env.PORT || 3000,
 );
