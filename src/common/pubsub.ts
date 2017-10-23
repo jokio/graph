@@ -13,7 +13,7 @@ export const pubsub = new RedisPubSub({
         host: REDIS_DOMAIN_NAME,
         port: REDIS_PORT_NUMBER,
         password: REDIS_PASSWORD,
-        retry_strategy: x => Math.max(x.attempt * 100, 3000)
+        retryStrategy: times => Math.max(times * 100, 3000)
     }
 });
 
