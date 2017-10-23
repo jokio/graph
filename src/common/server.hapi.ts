@@ -33,7 +33,7 @@ export default function serverHapi(
 		path: '/',
 		graphiqlOptions: request => ({
 			endpointURL: path,
-			subscriptionsEndpoint: `ws://${subscriptionHost}:${PORT}${SUBSCRIPTIONS_PATH}`,
+			subscriptionsEndpoint: `${subscriptionHost}:${PORT}${SUBSCRIPTIONS_PATH}`,
 			editorTheme: 'elegant',
 			websocketConnectionParams: {
 				authToken: '123',
