@@ -4,7 +4,8 @@
   "description": "Jok Graph",
   "main": "index.js",
   "scripts": {
-    "start": "nodemon"
+    "start": "node dist/server.js",
+    "dev": "nodemon"
   },
   "dependencies": {
     "apollo-server-hapi": "^1.1.7",
@@ -15,9 +16,15 @@
     "graphql-tools": "^2.6.1",
     "hapi": "^16.6.2",
     "merge-graphql-schemas": "^1.2.0",
-    "nodemon": "^1.12.1",
     "subscriptions-transport-ws": "^0.9.1",
     "typed-rest-client": "^0.12.0"
+  },
+  "devDependencies": {
+    "@types/hapi": "^16.1.10",
+    "@types/node": "7.0.5",
+    "@types/graphql": "^0.11.5",
+    "nodemon": "^1.12.1",
+    "typescript": "2.5.3"
   },
   "keywords": [
     "jok",
@@ -25,11 +32,5 @@
     "api"
   ],
   "author": "Jok Entertainers",
-  "license": "MIT",
-  "devDependencies": {
-    "@types/hapi": "^16.1.10",
-    "@types/node": "7.0.5",
-    "@types/graphql": "^0.11.5",
-    "typescript": "2.5.3"
-  }
+  "license": "MIT"
 }
