@@ -7,13 +7,14 @@ import * as hapiHeroku from 'hapi-heroku-helpers';
 
 export default function serverHapi(
 	schema,
-	domain = 'localhost',
+	host = 'localhost',
+	subscriptionHost = 'localhost',
 	port = process.env.PORT || 3000,
 	path = '/graphql',
 ) {
 	const server = new hapi.Server({ debug: false });
 
-	const HOST = domain;
+	const HOST = host;
 	const PORT = port;
 	const SUBSCRIPTIONS_PATH = '/subscriptions';
 
@@ -32,7 +33,7 @@ export default function serverHapi(
 		path: '/',
 		graphiqlOptions: request => ({
 			endpointURL: path,
-			subscriptionsEndpoint: `ws://${HOST}:${PORT}${SUBSCRIPTIONS_PATH}`,
+			subscriptionsEndpoint: `ws://${subscriptionHost}:${PORT}${SUBSCRIPTIONS_PATH}`,
 			editorTheme: 'elegant',
 			websocketConnectionParams: {
 				authToken: '123',
@@ -45,7 +46,7 @@ export default function serverHapi(
 		port: +PORT,
 	});
 
-	server.register(hapiHeroku);
+	// server.register(hapiHeroku);
 	server.register({ register: graphqlHapi, options: graphqlOptions });
 	server.register({ register: graphiqlHapi, options: graphiqlOptions });
 
