@@ -6,6 +6,7 @@ type Track {
   lyrics: String
   youtubeVideoId: String
   imageUrl: String
+  channelId: Int
 }
 
 type Channel {
@@ -37,7 +38,7 @@ type Mutation {
 
 # Realtime stream from the backend
 type Subscription {
-  musicChannelTrackUpdated: Channel
+  musicChannelTrackUpdated: Track
 }
 
 

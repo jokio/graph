@@ -17,19 +17,19 @@ export const pubsub = new RedisPubSub({
     }
 });
 
-let i = 1;
-setInterval(x => {
+// let i = 1;
+// setInterval(x => {
 
-    const channel = {
-        id: i++,
-        name: 'test',
-        key: 'xxx2'
-    }
+//     const channel = {
+//         id: i++,
+//         name: 'test',
+//         key: 'xxx2'
+//     }
 
-    pubsub.publish('musicChannelTrackUpdated', {
-        musicChannelTrackUpdated: channel,
-    });
-}, 100);
+//     pubsub.publish('musicChannelTrackUpdated', {
+//         musicChannelTrackUpdated: channel,
+//     });
+// }, 100);
 
 
 // const subscriptionManager = new PubSubEngine({
