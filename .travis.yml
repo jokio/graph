@@ -29,5 +29,5 @@ deploy:
   api_key: $HEROKU_API_KEY
   skip_cleanup: true
 
- notifications:
-    slack: $SLACK_KEY
+notifications:
+  slack: $SLACK_KEY
