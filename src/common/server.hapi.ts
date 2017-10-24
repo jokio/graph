@@ -8,8 +8,8 @@ import * as hapiHeroku from 'hapi-heroku-helpers';
 export default function serverHapi(
 	schema,
 	host = 'localhost',
-	subscriptionHost = 'localhost',
-	port = process.env.PORT || 3000,
+	port = 3000,
+	subscriptionHost = '',
 	path = '/graphql',
 ) {
 	const server = new hapi.Server({ debug: false });
@@ -33,7 +33,7 @@ export default function serverHapi(
 		path: '/',
 		graphiqlOptions: request => ({
 			endpointURL: path,
-			subscriptionsEndpoint: `${subscriptionHost}:${PORT}${SUBSCRIPTIONS_PATH}`,
+			subscriptionsEndpoint: 'wss://jok-graph.herokuapp.com/subscriptions',
 			editorTheme: 'elegant',
 			websocketConnectionParams: {
 				authToken: '123',
