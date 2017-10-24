@@ -17,6 +17,8 @@ const subscriptionUrl = isProduction
 	: `ws://${host}:${port}/subscription`
 
 
+console.log('Just Awesome')
+
 startGraphQLServer(
 	schema,
 	host,
