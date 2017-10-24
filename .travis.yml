@@ -28,4 +28,4 @@ deploy:
     skip_cleanup: true
 
 notifications:
-  slack: $SLACK_KEY
+  slack: jokio:D3cBL2Pds1LbunOzvWYsMUE1
