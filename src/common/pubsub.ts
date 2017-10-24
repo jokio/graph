@@ -1,39 +1,19 @@
 import { PubSub } from 'graphql-subscriptions';
-import { RedisPubSub } from 'graphql-redis-subscriptions';
+import * as Redis from 'ioredis';
 
-// export const pubsub = new PubSub();
+export const pubsub = new PubSub();
 
-const REDIS_DOMAIN_NAME = 'redis-18107.c2.eu-west-1-3.ec2.cloud.redislabs.com';
-const REDIS_PORT_NUMBER = 18107;
-const REDIS_PASSWORD = 'E5kizdrOHDFt7eb8';
+const REDIS_CONFIG = process.env.REDIS_CONFIG;
 
+if (REDIS_CONFIG) {
+    const redis = new Redis({
+        host: REDIS_CONFIG.split(':')[0],
+        port: +REDIS_CONFIG.split(':')[1],
+        password: REDIS_CONFIG.split(':')[2],
+    });
 
-export const pubsub = new RedisPubSub({
-    connection: {
-        host: REDIS_DOMAIN_NAME,
-        port: REDIS_PORT_NUMBER,
-        password: REDIS_PASSWORD,
-        retryStrategy: times => Math.max(times * 100, 3000)
-    }
-});
-
-// let i = 1;
-// setInterval(x => {
-
-//     const channel = {
-//         id: i++,
-//         name: 'test',
-//         key: 'xxx2'
-//     }
-
-//     pubsub.publish('musicChannelTrackUpdated', {
-//         musicChannelTrackUpdated: channel,
-//     });
-// }, 100);
-
-
-// const subscriptionManager = new PubSubEngine({
-//     schema,
-//     pubsub,
-//     setupFunctions: {},
-// });
+    redis.subscribe('musicChannelTrackUpdated', x => {
+        // fill data
+        pubsub.publish('musicChannelTrackUpdated', x);
+    });
+}
