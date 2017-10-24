@@ -17,13 +17,14 @@ before_deploy:
   - rm -rf node_modules
   - echo $AZURE_WA_SITE
 
-# deploy:
-#   provider: azure_web_apps
-#   verbose: true
-#   skip_cleanup: true
+deploy:
+  provider: azure_web_apps
+  site: jok-test2
+  verbose: true
+  skip_cleanup: true
 
 deploy:
   provider: heroku
-  api_key: $HEROKU_API_KEY
   app: jok-graph
+  api_key: $HEROKU_API_KEY
   skip_cleanup: true
