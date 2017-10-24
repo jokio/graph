@@ -15,7 +15,6 @@ cache:
 before_deploy:
   - tsc
   - rm -rf node_modules
-  - echo $AZURE_WA_SITE
 
 deploy:
   # - provider: azure_web_apps
