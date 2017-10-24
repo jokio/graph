@@ -18,10 +18,10 @@ before_deploy:
   - echo $AZURE_WA_SITE
 
 deploy:
-  - provider: azure_web_apps
-    site: jok-test2
-    verbose: true
-    skip_cleanup: true
+  # - provider: azure_web_apps
+  #   site: jok-test2
+  #   verbose: true
+  #   skip_cleanup: true
   - provider: heroku
     app: jok-graph
     api_key: $HEROKU_API_KEY
