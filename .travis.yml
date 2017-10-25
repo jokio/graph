@@ -17,14 +17,14 @@ before_deploy:
   - rm -rf node_modules
 
 deploy:
-  # - provider: azure_web_apps
-  #   site: jok-test2
-  #   verbose: true
-  #   skip_cleanup: true
-  - provider: heroku
-    app: jok-graph
-    api_key: $HEROKU_API_KEY
+  - provider: azure_web_apps
+    site: jok-test2
+    verbose: true
     skip_cleanup: true
+  # - provider: heroku
+  #   app: jok-graph
+  #   api_key: $HEROKU_API_KEY
+  #   skip_cleanup: true
 
 notifications:
   - slack: jokio:D3cBL2Pds1LbunOzvWYsMUE1
