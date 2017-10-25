@@ -27,4 +27,9 @@ deploy:
     skip_cleanup: true
 
 notifications:
-  slack: jokio:D3cBL2Pds1LbunOzvWYsMUE1
+  - slack: jokio:D3cBL2Pds1LbunOzvWYsMUE1
+  - email:
+      recipients:
+      - ez@jok.io
+      on_success: never
+      on_failure: always
