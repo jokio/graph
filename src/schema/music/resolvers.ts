@@ -1,4 +1,4 @@
-import { pubsub } from '../../common/pubsub';
+import { pubsub, Events } from '../../common/pubsub';
 import { api, HttpCodes } from '../../common/api';
 
 export default {
@@ -43,10 +43,7 @@ export default {
     },
     Subscription: {
         musicChannelTrackUpdated: {
-            subscribe: (obj, args, context, info) => {
-                console.log('aaa');
-                return pubsub.asyncIterator('musicChannelTrackUpdated');
-            },
+            subscribe: (obj, args, context, info) => pubsub.asyncIterator(Events.MusicChannel.TrackUpdated),
         }
     },
 }

@@ -15,7 +15,7 @@ export default function serverHapi(
 
 	const HOST = host;
 	const PORT = port;
-	const SUBSCRIPTIONS_PATH = '/subscriptions';
+	const SUBSCRIPTIONS_PATH = '/subscription';
 
 	const graphqlOptions: HapiPluginOptions = {
 		path,
@@ -32,7 +32,7 @@ export default function serverHapi(
 		path: '/',
 		graphiqlOptions: request => ({
 			endpointURL: path,
-			subscriptionsEndpoint: 'wss://jok-graph.herokuapp.com/subscriptions',
+			subscriptionsEndpoint: subscriptionHost,
 			editorTheme: 'elegant',
 			websocketConnectionParams: {
 				authToken: '123',
