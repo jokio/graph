@@ -1,11 +1,12 @@
 
 type Track {
-  id: Int!
+  id: Int
   info: String
   duration: Int
   lyrics: String
   youtubeVideoId: String
   imageUrl: String
+  channelId: Int
 }
 
 type Channel {
@@ -26,7 +27,7 @@ type Channel {
 
 # Reads from the backend
 type Query {
-  musicChannels(offset: Int, limit: Int): [Channel]
+  musicChannels(offset: Int, limit: Int, includeOfflines: Boolean): [Channel]
 }
 
 # Perform actions over the backend
@@ -37,7 +38,7 @@ type Mutation {
 
 # Realtime stream from the backend
 type Subscription {
-  musicChannelTrackUpdated: Channel
+  musicChannelTrackUpdated: Track
 }
 
 

@@ -10,11 +10,15 @@ export default {
         }
     },
     Query: {
-        musicChannels: async (obj, { offset, limit }, context, info) => {
+        musicChannels: async (obj, { offset, limit, includeOfflines }, context, info) => {
             const skip = offset || 0;
             const take = limit || 10;
+            let url = '/music/channel/list';
 
-            const response = await api.get<any[]>('/music/channel/list');
+            if (includeOfflines)
+                url += '?includeOfflines=true';
+
+            const response = await api.get<any[]>(url);
             if (response.statusCode !== HttpCodes.OK) {
                 throw new Error(`Data fetch error: ${response.statusCode}`);
             }
