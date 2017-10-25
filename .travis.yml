@@ -18,7 +18,7 @@ before_deploy:
 
 deploy:
   - provider: azure_web_apps
-    site: jok-test2
+    site: jok-test1
     verbose: true
     skip_cleanup: true
   # - provider: heroku
