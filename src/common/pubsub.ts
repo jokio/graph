@@ -5,8 +5,6 @@ export const pubsub = new PubSub();
 
 const REDIS_CONFIG = process.env.REDIS_CONFIG;
 
-console.log('REDIS_CONFIG', REDIS_CONFIG)
-
 if (REDIS_CONFIG) {
     const configParams = REDIS_CONFIG.split(':');
 
@@ -18,8 +16,9 @@ if (REDIS_CONFIG) {
         password: configParams[2],
     });
 
-    redis.subscribe('musicChannelTrackUpdated', x => {
-        // fill data
-        pubsub.publish('musicChannelTrackUpdated', x);
+    redis.on('message', (channel, payload) => {
+        pubsub.publish('musicChannelTrackUpdated', JSON.parse(payload));
     });
+
+    redis.subscribe('musicChannelTrackUpdated');
 }

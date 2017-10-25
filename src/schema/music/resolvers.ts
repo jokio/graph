@@ -44,6 +44,7 @@ export default {
     Subscription: {
         musicChannelTrackUpdated: {
             subscribe: (obj, args, context, info) => {
+                console.log('aaa');
                 return pubsub.asyncIterator('musicChannelTrackUpdated');
             },
         }

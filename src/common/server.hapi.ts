@@ -3,7 +3,6 @@ import { graphqlHapi, graphiqlHapi, HapiPluginOptions, HapiGraphiQLPluginOptions
 import { SubscriptionServer } from 'subscriptions-transport-ws';
 import { execute, subscribe, printSchema } from 'graphql';
 import { validateAndGetUser, getToken } from './auth';
-import * as hapiHeroku from 'hapi-heroku-helpers';
 
 export default function serverHapi(
 	schema,
@@ -46,7 +45,6 @@ export default function serverHapi(
 		port: +PORT,
 	});
 
-	// server.register(hapiHeroku);
 	server.register({ register: graphqlHapi, options: graphqlOptions });
 	server.register({ register: graphiqlHapi, options: graphiqlOptions });
 
