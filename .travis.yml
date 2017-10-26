@@ -5,8 +5,8 @@ sudo: false
 node_js:
   - 'stable'
 
-git:
-   depth: 9999999
+# git:
+#    depth: 9999999
 
 install:
   - npm install
@@ -16,6 +16,9 @@ install:
 cache:
   directories:
     - node_modules
+
+before-deploy:
+  - git filter-branch -- --all
 
 deploy:
   - provider: azure_web_apps
