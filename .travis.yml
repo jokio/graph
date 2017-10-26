@@ -15,7 +15,7 @@ cache:
     - node_modules
 
 before-deploy:
-  - git filter-branch -- --all
+  - git filter-branch -- --all # for azure only
 
 deploy:
   - provider: azure_web_apps
