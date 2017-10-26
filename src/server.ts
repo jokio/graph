@@ -5,6 +5,7 @@ import schema from './schema';
  - NODE_ENV : production
  - DOMAIN : graph.jok.io
  - PORT : random
+ - REDIS_CONFIG : RedisUrl:Port:Password
 */
 
 const isProduction = process.env.NODE_ENV === 'production';

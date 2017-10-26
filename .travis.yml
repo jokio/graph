@@ -7,18 +7,16 @@ node_js:
 
 install:
   - npm install
+  - tsc
+  - rm -rf node_modules
 
 cache:
   directories:
     - node_modules
 
-before_deploy:
-  - tsc
-  - rm -rf node_modules
-
 deploy:
   - provider: azure_web_apps
-    site: jok-test1
+    site: jokio-graph
     verbose: true
     skip_cleanup: true
   - provider: heroku
