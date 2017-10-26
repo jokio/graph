@@ -20,7 +20,7 @@ deploy:
     verbose: true
     skip_cleanup: true
   - provider: heroku
-    app: jok-graph
+    app: jokio-graph
     api_key: $HEROKU_API_KEY
     skip_cleanup: true
 
