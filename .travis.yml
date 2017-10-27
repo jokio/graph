@@ -28,4 +28,8 @@ deploy:
     skip_cleanup: true
 
 notifications:
-  slack: $SLACK_KEY
+  slack:
+    rooms:
+      - $SLACK_KEY
+    on_success: change # default: always
+    on_failure: always # default: always
