@@ -31,5 +31,5 @@ notifications:
   slack:
     rooms:
       - $SLACK_KEY
-    on_success: change # default: always
+    on_success: always # default: always
     on_failure: always # default: always
