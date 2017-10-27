@@ -22,7 +22,7 @@ deploy:
     site: jokio-graph
     verbose: true
     skip_cleanup: true
-  - fprovider: heroku
+  - provider: heroku
     app: jokio-graph
     api_key: $HEROKU_API_KEY
     skip_cleanup: true
