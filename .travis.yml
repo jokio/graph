@@ -28,11 +28,11 @@ deploy:
     skip_cleanup: true
 
 notifications:
-  - slack:
+  slack:
     rooms:
       secure: Y5l9PicAv8ZVcio4OqVTcXzucwZLhbDJSEvpVBf3mPGNtNb8gXGBtCGD+Vnn7nYjJ3FnApNOliL4lZHWXVmxVKt0hmCE1qwztT1K5QwMnfackwHdN8Y7c1wHk8Kv41nvkpfWvntUE4jPigw2/vhjyqAYRmX72JJn5pWxRxgrU3E3boD720JaeHuthcoe93+3xGPa5j0IIIJtzKev2+vukuI2tAWPHsaoN2drJdYQKuxnRfFPP07f7hTDjmkcaFO3aLRwxKq4sQjnuhjWbBtvRNwUnThjLgpcRqjdgHS5bVELsXdSZsYPypZM8C2jySsUX+GAj4/DKP5WsjBQHuy+DFMJTvxC86t+M3ujofitM/k2zx/6unNOhVkUVTUnSEi4zImM0wwyXenQfq/otINvyMskB7+2Cc4tO6iPe04iGre8EBp2+sjmvJerblnUJ035Kseu24sQ+pQBFZtF8+eJCWC3xiBiC2NIcT/07uTjg2SdNyIXWyZaUViZTK3hSmhN01qtNgfJBINmfAIAxlvtTdGoeUC46IOJKTLKDXQVY6A4ezhgMsg7uGRVmaC5QNudiW0BY4p7vDx9OWQd2mgil6a45uT6AC+u8kXTX5rWYf0v+z5wqPfGreIL6jqCJPGySczrishuCs5aj4HThhi8sMlGtZlifQOlCV+eJekqm6g=
-  - email:
-    recipients:
-      - ez@jok.io
-    on_success: never
-    on_failure: always
+  # - email:
+  #   recipients:
+  #     - ez@jok.io
+  #   on_success: never
+  #   on_failure: always
