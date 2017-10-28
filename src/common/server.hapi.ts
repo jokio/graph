@@ -32,6 +32,8 @@ export default function serverHapi(
 			path: '/{path*}',
 			handler: () => this.reply.redirect('https://${HOST}/') //  + this.params.path
 		});
+
+		http.start();
 	}
 
 	const graphqlOptions: HapiPluginOptions = {
