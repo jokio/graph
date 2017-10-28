@@ -30,6 +30,4 @@ deploy:
 notifications:
   slack:
     rooms:
-      - $SLACK_KEY
-    on_success: always # default: always
-    on_failure: always # default: always
+      secure: Jr9YnrBNQ0XQJbGwbxUU+2SaDeZLDwuULWL/9kDHfTd1X0F4DudWMFKlEbrilU/9iNx6t8od53LNI8CYyOALJSCGUi6Uzfb+u+DOJogKOeWTe5pZ+tRs8DPXlHme5xOpV1qlQSoKe5uF0wnKz7WQtOuj9ziZ2Isj5aasV6/KxfRk4kx3J/gS8RqcnMZ2eoD4q3mUr1qMxCLNQkQFNuly1MZNTsFtoYccJKNmH6VvqKUXwz/gdHTWysWGMaVdN98baAXNhMzkOaUFbiARE2I12fr1d7ewQnPRh4IHd/3s4F87GR/TVAA9OxEB4UAclVuMI/WXe/uGNyQ+O7jHdS288+0khDwj3BjCTMfPjhYoxIYW9F7C02BZBTYnLc1l+YPQxEY1CPVJg0n33x+TtHAWpeDxn+aqz+jIc0Cku7gev9Ta8t6/rx2cHjFtlPGm6pP5Bc6v3zRkydS/WHZ1rQCwvaly5VADsU7nXnEbExRvfyBhdyClPAlgviODRXGE9uMkbMgoKZON6q01PJrP8UMPmetNzeGADf3Z7DfIQfqEIlRcByjHh1aS2QIAxrVfsDg0/XDEuEO5kQ/zpwKdUPZknL358Badcd7bOcugRraz6NOLq4hci+Y63EFgjH9Mo5+fyBFiNdXwGy9iQ5hZlTMo8x5g7ts0tZaCtFxV3wkNAlo=
