@@ -9,7 +9,8 @@ export default function serverHapi(
 	host = 'localhost',
 	port = 3000,
 	subscriptionHost = '',
-	path = '/graphql',
+	graphqlPath = '/graphql',
+	redirectToHttps = false
 ) {
 	const server = new hapi.Server({ debug: false });
 
@@ -17,8 +18,24 @@ export default function serverHapi(
 	const PORT = port;
 	const SUBSCRIPTIONS_PATH = '/subscription';
 
+
+	if (redirectToHttps) {
+		var http = new hapi.Server({ debug: false });
+
+		http.connection({
+			host: HOST,
+			port: 80,
+		})
+
+		http.route({
+			method: '*',
+			path: '/{path*}',
+			handler: () => this.reply.redirect('https://${HOST}/') //  + this.params.path
+		});
+	}
+
 	const graphqlOptions: HapiPluginOptions = {
-		path,
+		path: graphqlPath,
 		graphqlOptions: async request => ({
 			schema,
 			context: await validateAndGetUser(getToken(request)),
@@ -31,7 +48,7 @@ export default function serverHapi(
 	const graphiqlOptions: HapiGraphiQLPluginOptions = {
 		path: '/',
 		graphiqlOptions: request => ({
-			endpointURL: path,
+			endpointURL: graphqlPath,
 			subscriptionsEndpoint: subscriptionHost,
 			editorTheme: 'elegant',
 			websocketConnectionParams: {

@@ -21,5 +21,7 @@ startGraphQLServer(
 	schema,
 	host,
 	port,
-	subscriptionUrl
+	subscriptionUrl,
+	'/graphql',
+	isProduction,
 );

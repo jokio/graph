@@ -40,6 +40,7 @@ export default {
 
             return true;
         }
+        musicChannel
     },
     Subscription: {
         musicChannelTrackUpdated: {
