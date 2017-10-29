@@ -7,6 +7,7 @@ export default {
         avatar: async (obj, { id = 'me' }, { token }) =>
             await api.get<any>(`/user/${id}/avatar`, { token }),
 
+        profile: (obj) => obj,
     },
     Query: {
         user: async (obj, { id = 'me' }, { token }) =>

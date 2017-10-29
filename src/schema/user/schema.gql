@@ -10,6 +10,11 @@ enum Language {
   ru
 }
 
+type Profile {
+  facebook: FacebookProfile
+  joker: JokerProfile
+}
+
 type User {
   id: Int!
   nick: String!
@@ -20,6 +25,8 @@ type User {
   language: Language!
 
   musicChannels(includeOfflines: Boolean): [Channel]!
+
+  profile: Profile
 }
 
 
