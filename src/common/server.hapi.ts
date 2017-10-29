@@ -52,7 +52,6 @@ export default function serverHapi(
 		path: '/',
 		graphiqlOptions: request => ({
 			endpointURL: graphqlPath,
-			query: `token=${request.query.token}`,
 			subscriptionsEndpoint: subscriptionHost,
 			editorTheme: 'elegant',
 			websocketConnectionParams: {
