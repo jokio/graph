@@ -8,9 +8,11 @@ export function userLanguageMap(user) {
         case 'en-US':
             user.language = 'en';
             break;
+
         case 'ka-GE':
             user.language = 'ge';
             break;
+
         case 'ru-RU':
             user.language = 'ru';
             break;
