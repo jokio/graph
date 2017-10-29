@@ -24,6 +24,5 @@ type User {
 
 
 type Query {
-  # Default current user
   user(id: Int): User
 }

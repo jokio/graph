@@ -9,6 +9,7 @@
     "dev": "nodemon"
   },
   "dependencies": {
+    "apollo-link": "^1.0.0",
     "apollo-server-hapi": "1.1.7",
     "axios": "^0.17.0",
     "cors": "2.8.4",

@@ -25,18 +25,14 @@ type Channel {
 }
 
 
-# Reads from the backend
 type Query {
   musicChannels(includeOfflines: Boolean): [Channel]
 }
 
-# Perform actions over the backend
 type Mutation {
-  # Create a user and return the created user.
   musicChannelSetFavorite(id: Int!, isFavorite: Boolean!): Boolean
 }
 
-# Realtime stream from the backend
 type Subscription {
   musicChannelTrackUpdated: Track
 }
