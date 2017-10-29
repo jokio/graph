@@ -2,7 +2,7 @@ import * as hapi from 'hapi';
 import { graphqlHapi, graphiqlHapi, HapiPluginOptions, HapiGraphiQLPluginOptions } from 'apollo-server-hapi';
 import { SubscriptionServer } from 'subscriptions-transport-ws';
 import { execute, subscribe, printSchema } from 'graphql';
-import { validateAndGetUser, getToken } from './auth';
+import { createContext, getToken } from './auth';
 
 export default function serverHapi(
 	schema,
@@ -10,7 +10,8 @@ export default function serverHapi(
 	port = 3000,
 	subscriptionHost = '',
 	graphqlPath = '/graphql',
-	redirectToHttps = false
+	redirectToHttps = false,
+	enableAuthentication = false
 ) {
 	const server = new hapi.Server({ debug: false });
 
@@ -25,7 +26,7 @@ export default function serverHapi(
 		http.connection({
 			host: HOST,
 			port: 80,
-		})
+		});
 
 		http.route({
 			method: '*',
@@ -40,7 +41,7 @@ export default function serverHapi(
 		path: graphqlPath,
 		graphqlOptions: async request => ({
 			schema,
-			context: await validateAndGetUser(getToken(request)),
+			context: await createContext(getToken(request), enableAuthentication),
 		}),
 		route: {
 			cors: true,
@@ -51,10 +52,11 @@ export default function serverHapi(
 		path: '/',
 		graphiqlOptions: request => ({
 			endpointURL: graphqlPath,
+			query: `token=${request.query.token}`,
 			subscriptionsEndpoint: subscriptionHost,
 			editorTheme: 'elegant',
 			websocketConnectionParams: {
-				authToken: '123',
+				token: request.query.token,
 			},
 		}),
 	};
@@ -86,8 +88,8 @@ export default function serverHapi(
 			subscribe,
 			schema,
 			onConnect: (connectionParams, socketOptions) => {
-				if (connectionParams.authToken) {
-					return validateAndGetUser(connectionParams.authToken);
+				if (connectionParams.token) {
+					return createContext(connectionParams.token, enableAuthentication);
 				}
 			},
 		}, { server: server.listener, path: SUBSCRIPTIONS_PATH });

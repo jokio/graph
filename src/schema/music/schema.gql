@@ -6,7 +6,6 @@ type Track {
   lyrics: String
   youtubeVideoId: String
   imageUrl: String
-  channelId: Int
 }
 
 type Channel {
@@ -25,25 +24,19 @@ type Channel {
   users: [User]
 }
 
+
 # Reads from the backend
 type Query {
-  musicChannels(offset: Int, limit: Int, includeOfflines: Boolean): [Channel]
+  musicChannels(includeOfflines: Boolean): [Channel]
 }
 
 # Perform actions over the backend
 type Mutation {
   # Create a user and return the created user.
-  musicChannelFavorite(id: Int!): Boolean
+  musicChannelSetFavorite(id: Int!, isFavorite: Boolean!): Boolean
 }
 
 # Realtime stream from the backend
 type Subscription {
   musicChannelTrackUpdated: Track
-}
-
-
-schema {
-  query: Query
-  mutation: Mutation
-  subscription: Subscription
 }

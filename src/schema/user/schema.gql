@@ -1,15 +1,29 @@
 
+enum Gender {
+  male
+  female
+}
+
+enum Language {
+  en
+  ge
+  ru
+}
+
 type User {
   id: Int!
-  name: String
-  channels: [Channel]
+  nick: String!
+  gender: Gender!
+  avatarUrl: String!
+  avatar: String
+  isVIP: Boolean!
+  language: Language!
+
+  musicChannels(includeOfflines: Boolean): [Channel]!
 }
 
-# Reads from the backend
+
 type Query {
-  users(offset: Int, limit: Int): [User]
-}
-
-schema {
-  query: Query
+  # Default current user
+  user(id: Int): User
 }

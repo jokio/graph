@@ -9,6 +9,7 @@ import schema from './schema';
 */
 
 const isProduction = process.env.NODE_ENV === 'production';
+const enableAuthentication = true;
 
 const host = isProduction ? '0.0.0.0' : 'localhost';
 const port = process.env.PORT || 3000;
@@ -24,4 +25,5 @@ startGraphQLServer(
 	subscriptionUrl,
 	'/graphql',
 	isProduction,
+	enableAuthentication
 );
