@@ -10,4 +10,8 @@ export default {
         user: async (obj, { id = 'me' }, { token }) =>
             await api.get<any>(`/user/${id}`, { token }).then(userLanguageMap)
     },
+    Mutation: {
+        userLogin: async (obj, props) =>
+            await api.post<string>(`/user/login`, props)
+    },
 }
