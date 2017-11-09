@@ -3,15 +3,17 @@ import { graphqlHapi, graphiqlHapi, HapiPluginOptions, HapiGraphiQLPluginOptions
 import { SubscriptionServer } from 'subscriptions-transport-ws';
 import { execute, subscribe, printSchema } from 'graphql';
 import { createContext, getToken } from './auth';
+import { Engine } from 'apollo-engine';
 
-export default function serverHapi(
+export default async function serverHapi(
 	schema,
 	host = 'localhost',
 	port = 3000,
 	subscriptionHost = '',
 	graphqlPath = '/graphql',
 	redirectToHttps = false,
-	enableAuthentication = false
+	enableAuthentication = false,
+	gatewayKey = ''
 ) {
 	const server = new hapi.Server({ debug: false });
 
@@ -67,6 +69,19 @@ export default function serverHapi(
 
 	server.register({ register: graphqlHapi, options: graphqlOptions });
 	server.register({ register: graphiqlHapi, options: graphiqlOptions });
+
+
+	if (gatewayKey) {
+		// create new engine instance from JS config object
+		const engine = new Engine({
+			engineConfig: {
+				apiKey: gatewayKey
+			}
+		});
+
+		await engine.start();
+		engine.instrumentHapiServer(server);
+	}
 
 	server.route({
 		method: 'GET',
