@@ -19,7 +19,7 @@ const subscriptionUrl = isProduction
 	? `wss://${process.env.DOMAIN}/subscription`
 	: `ws://${host}:${port}/subscription`
 
-const gatewayKey = process.env.APOLLO_GATEWAY_KEY || 'service:jokio-Jok-Graph:SbERVBMqTF7waWVKPb31VA';
+const gatewayKey = process.env.APOLLO_GATEWAY_KEY;
 
 
 startGraphQLServer(
