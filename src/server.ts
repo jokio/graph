@@ -15,8 +15,6 @@ const enableAuthentication = true;
 const host = isProduction ? '0.0.0.0' : 'localhost';
 const port = process.env.PORT || 3000;
 
-process.env.PORT = port;
-
 const subscriptionUrl = isProduction
 	? `wss://${process.env.DOMAIN}/subscription`
 	: `ws://${host}:${port}/subscription`
@@ -32,5 +30,5 @@ startGraphQLServer(
 	'/graphql',
 	isProduction,
 	enableAuthentication,
-	isProduction ? gatewayKey : '',
+	null,
 );
