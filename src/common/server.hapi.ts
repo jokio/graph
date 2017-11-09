@@ -3,7 +3,7 @@ import { graphqlHapi, graphiqlHapi, HapiPluginOptions, HapiGraphiQLPluginOptions
 import { SubscriptionServer } from 'subscriptions-transport-ws';
 import { execute, subscribe, printSchema } from 'graphql';
 import { createContext, getToken } from './auth';
-import { Engine } from 'apollo-engine';
+// import { Engine } from 'apollo-engine';
 
 export default async function serverHapi(
 	schema,
@@ -71,17 +71,17 @@ export default async function serverHapi(
 	server.register({ register: graphiqlHapi, options: graphiqlOptions });
 
 
-	if (gatewayKey) {
-		// create new engine instance from JS config object
-		const engine = new Engine({
-			engineConfig: {
-				apiKey: gatewayKey
-			}
-		});
+	// if (gatewayKey) {
+	// 	// create new engine instance from JS config object
+	// 	const engine = new Engine({
+	// 		engineConfig: {
+	// 			apiKey: gatewayKey
+	// 		}
+	// 	});
 
-		await engine.start();
-		engine.instrumentHapiServer(server);
-	}
+	// 	await engine.start();
+	// 	engine.instrumentHapiServer(server);
+	// }
 
 	server.route({
 		method: 'GET',
