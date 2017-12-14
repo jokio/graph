@@ -4,6 +4,7 @@ import { GraphQLServer } from 'graphql-yoga';
 import { Engine } from 'apollo-engine';
 import { graphiqlExpress } from 'apollo-server-express';
 
+import scalar from './modules/scalars';
 import { RunProps } from './types';
 
 
@@ -28,13 +29,22 @@ export async function run(props: RunProps) {
         port: portString,
         engineConfig,
         endpoint,
+        disabledScalars,
         subscriptionEndpoint: subscriptionsEndpoint,
      } = props;
 
     const port = parseInt(portString, 10);
 
-    const typeDefs = modules.map(x => x.typeDefs).join();
-    const resolvers = modules.map(x => x.resolvers).reduce(merge);
+    let typeDefs = modules.map(x => x.typeDefs).join();
+    let resolvers = modules.map(x => x.resolvers).reduce(merge);
+
+    if (!disabledScalars) {
+        typeDefs = scalar.typeDefs + typeDefs;
+        resolvers = {
+            ...resolvers,
+            ...scalar.resolvers,
+        }
+    }
 
     const schema = !props.modules.length ? undefined : mergeSchemas({
         schemas: [typeDefs],

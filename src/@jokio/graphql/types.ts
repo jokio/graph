@@ -9,6 +9,7 @@ export interface RunProps {
     subscriptionEndpoint?: string
     disablePub?: boolean
     disableSub?: boolean
+    disabledScalars?: boolean
 }
 
 export interface Module {
