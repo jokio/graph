@@ -1,4 +1,0 @@
-
-type JokerProfile {
-  lastPlayDate: Float
-}
