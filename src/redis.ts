@@ -1,9 +1,6 @@
 import { PubSub } from 'graphql-subscriptions';
 import * as Redis from 'ioredis';
 
-export const pubsub = new PubSub();
-
-const REDIS_CONFIG = process.env.REDIS_CONFIG;
 
 export const Events = {
     MusicChannel: {
@@ -12,8 +9,10 @@ export const Events = {
 }
 
 
-if (REDIS_CONFIG) {
-    const configParams = REDIS_CONFIG.split(':');
+export function configure({ redisConfig, pubsub }) {
+    if (!redisConfig) return;
+
+    const configParams = redisConfig.split(':');
 
     const redis = new Redis({
         host: configParams[0],
@@ -36,4 +35,9 @@ if (REDIS_CONFIG) {
     });
 
     redis.subscribe(Events.MusicChannel.TrackUpdated);
+}
+
+export default {
+    configure,
+    Events,
 }

@@ -1,5 +1,5 @@
-import { pubsub, Events } from '../common/pubsub';
-import { api } from '../common/api';
+import { Events } from '../redis';
+import { api } from '../api';
 
 export const typeDefs = `
 extend type Query {
@@ -57,8 +57,6 @@ export default {
     typeDefs,
     resolvers
 }
-
-
 
 
 

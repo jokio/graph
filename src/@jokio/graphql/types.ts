@@ -5,8 +5,9 @@ export interface RunProps {
     port?: string
     endpoint?: string
     modules?: Module[]
+    remtoeSchemaUrls?: string[]
     engineConfig?: EngineConfig
-    subscriptionEndpoint?: string
+    subscriptionsEndpoint?: string
     disablePub?: boolean
     disableSub?: boolean
     disabledScalars?: boolean

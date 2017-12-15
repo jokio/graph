@@ -1,7 +1,6 @@
-import { Request } from 'hapi';
 import { api } from './api';
 
-export function getToken(request: Request, tokenName = 'token') {
+export function getToken(request: any, tokenName = 'token') {
 	if (request.query && request.query.token)
 		return request.query.token;
 

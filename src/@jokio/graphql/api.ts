@@ -1,10 +1,15 @@
 import { request } from 'http';
 import axios from 'axios';
 
-const BaseUrl = 'https://x.jok.io/';
+
+export class API {
+
+    constructor(
+        private baseUrl,
+        private timeout = 10 * 1000
+    ) { }
 
 
-class API {
     async get<T>(url: string, params?: { [key: string]: any }): Promise<T> {
         const result = await this.httpInstance().get(url, { params });
         return result.data;
@@ -33,12 +38,10 @@ class API {
 
     private httpInstance() {
         return axios.create({
-            baseURL: BaseUrl,
-            timeout: 10 * 1000,
+            baseURL: this.baseUrl,
+            timeout: this.timeout,
             headers: {},
             responseType: 'json',
         });
     }
 }
-
-export const api = new API();

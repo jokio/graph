@@ -1,5 +1,5 @@
-import { pubsub, Events } from '../common/pubsub';
-import { api } from '../common/api';
+import { Events } from '../redis';
+import { api } from '../api';
 
 export const typeDefs = `
 extend type Query {
@@ -60,7 +60,7 @@ export const resolvers = {
     },
     Subscription: {
         musicChannelTrackUpdated: {
-            subscribe: () => pubsub.asyncIterator(Events.MusicChannel.TrackUpdated),
+            subscribe: (obj, props, { pubsub }) => pubsub.asyncIterator(Events.MusicChannel.TrackUpdated),
         }
     },
 }

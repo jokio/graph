@@ -1,4 +1,5 @@
-import * as graphqlServer from '@jokio/graphql';
+import GraphqlServer from './@jokio/graphql';
+import Redis from './redis';
 
 import core from './modules/core';
 import joker from './modules/joker';
@@ -15,13 +16,23 @@ const modules = [
 	social,
 ];
 
-const engineConfig = {
-	apiKey: process.env.APOLLO_ENGINE_KEY || 'service:playerx-747:qh9bULYm5hNnMODRcw46Rw'
+const remtoeSchemaUrls = [
+];
+
+
+const redisConfig = process.env.REDIS_CONFIG;
+
+const config = {
+	modules,
+	remtoeSchemaUrls,
+	port: process.env.PORT,
+	subscriptionsEndpoint: process.env.SUBSCRIPTION_URL,
+	engineConfig: {
+		apiKey: process.env.APOLLO_ENGINE_KEY,
+	},
 };
 
-graphqlServer.run({
-	port: process.env.PORT,
-	subscriptionEndpoint: process.env.SUBSCRIPTION_URL,
-	modules,
-	engineConfig,
-});
+
+GraphqlServer.run(config)
+	.then(({ pubsub }) => ({ pubsub, redisConfig }))
+	.then(Redis.configure)
