@@ -12,8 +12,8 @@ install:
 
 cache: yarn
 
-before-deploy:
-  - git filter-branch -- --all # for azure only
+# before-deploy:
+#   - git filter-branch -- --all # for azure only
 
 deploy:
   - provider: azure_web_apps
