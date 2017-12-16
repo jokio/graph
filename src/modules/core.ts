@@ -5,6 +5,14 @@ type Query {
 
 type ServerInfo {
     startTime: DateTime
+    upTime: ServerUpTime
+}
+
+type ServerUpTime {
+    inSec: Float
+    inMin: Float
+    inHour: Float
+    inDay: Float
 }
 
 type Mutation {
@@ -16,12 +24,18 @@ type Subscription {
 }
 `
 
-const startTime = new Date();
+const startTime = Date.now();
 
 export const resolvers = {
     Query: {
         serverInfo: () => ({
-            startTime
+            startTime: new Date(startTime),
+            upTime: {
+                inSec: (Date.now() - startTime) / (1000),
+                inMin: (Date.now() - startTime) / (1000 * 60),
+                inHour: (Date.now() - startTime) / (1000 * 60 * 60),
+                inDay: (Date.now() - startTime) / (1000 * 60 * 60 * 24),
+            }
         })
     },
 

@@ -10,7 +10,12 @@
 		"emitDecoratorMetadata": true,
 		"outDir": "dist",
 		"lib": [
-			"esnext"
+			"esnext",
+			"es6"
+		],
+		"typeRoots": [
+			"node_modules/@types",
+			"typings"
 		]
 	},
 	"exclude": [

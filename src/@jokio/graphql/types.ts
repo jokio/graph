@@ -17,3 +17,5 @@ export interface Module {
     typeDefs: string
     resolvers: IResolvers
 }
+
+declare var GlobalFetch: any;

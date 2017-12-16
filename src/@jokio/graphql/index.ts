@@ -3,12 +3,10 @@ import { mergeSchemas, introspectSchema, makeRemoteExecutableSchema } from 'grap
 import { GraphQLServer, PubSub } from 'graphql-yoga';
 import { Engine } from 'apollo-engine';
 import { graphiqlExpress } from 'apollo-server-express';
-import { HttpLink } from 'apollo-link-http';
+import { HttpLink } from './link-http';
 import fetch from 'node-fetch';
-
 import scalar from './modules/scalars';
 import { RunProps } from './types';
-
 
 export { Module } from './types';
 
