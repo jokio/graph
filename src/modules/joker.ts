@@ -1,22 +1,22 @@
 export const typeDefs = `
 extend type Profile {
-    joker: JokerProfile
+	joker: JokerProfile
 }
 
 type JokerProfile {
-    lastPlayDate: Float
+	lastPlayDate: Float
 }
 `
 
 export const resolvers = {
-    Profile: {
-        joker: async (obj, props, { token }) => {
-            return ({ lastPlayDate: Date.now() })
-        }
-    },
+	Profile: {
+		joker: async (obj, props, { token }) => {
+			return ({ lastPlayDate: Date.now() })
+		}
+	},
 }
 
 export default {
-    typeDefs,
-    resolvers
+	typeDefs,
+	resolvers
 }
