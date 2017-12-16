@@ -12,14 +12,7 @@ install:
 
 cache: yarn
 
-# before-deploy:
-#   - git filter-branch -- --all # for azure only
-
 deploy:
-  - provider: azure_web_apps
-    site: jokio-graph
-    verbose: true
-    skip_cleanup: true
   - provider: heroku
     app: jokio-graph
     api_key: $HEROKU_API_KEY
