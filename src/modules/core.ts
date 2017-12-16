@@ -1,6 +1,6 @@
 export const typeDefs = `
 type Query {
-    info: ServerInfo
+    serverInfo: ServerInfo
 }
 
 type ServerInfo {
@@ -20,7 +20,7 @@ const startTime = new Date();
 
 export const resolvers = {
     Query: {
-        info: () => ({
+        serverInfo: () => ({
             startTime
         })
     },
