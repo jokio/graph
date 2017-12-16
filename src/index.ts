@@ -8,10 +8,10 @@ import user from './modules/user';
 
 
 const modules = [
-	// user,
-	// joker,
-	// music,
-	// social,
+	user,
+	joker,
+	music,
+	social,
 ];
 
 const remtoeSchemaUrls = [
