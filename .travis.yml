@@ -6,13 +6,11 @@ node_js:
   - 'stable'
 
 install:
-  - npm install
+  - yarn
   - tsc
   - rm -rf node_modules
 
-cache:
-  directories:
-    - node_modules
+cache: yarn
 
 before-deploy:
   - git filter-branch -- --all # for azure only
