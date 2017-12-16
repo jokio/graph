@@ -1,7 +1,6 @@
 import GraphqlServer from './@jokio/graphql';
 import Redis from './redis';
 
-import core from './modules/core';
 import joker from './modules/joker';
 import music from './modules/music';
 import social from './modules/social';
@@ -9,11 +8,10 @@ import user from './modules/user';
 
 
 const modules = [
-	core,
-	user,
-	joker,
-	music,
-	social,
+	// user,
+	// joker,
+	// music,
+	// social,
 ];
 
 const remtoeSchemaUrls = [
