@@ -1,6 +1,8 @@
-import { Resolvers } from "../@jokio/graphql";
+import { Resolvers } from "@jokio/graphql";
+
 import { Context } from "../context";
 import { Events } from '../redis';
+
 
 export const typeDefs = `
 extend type Query {

@@ -1,5 +1,7 @@
-import { Resolvers } from "../@jokio/graphql";
+import { Resolvers } from "@jokio/graphql";
+
 import { Context } from "../context";
+
 
 export const typeDefs = `
 extend type Profile {

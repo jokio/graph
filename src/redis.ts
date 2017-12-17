@@ -1,4 +1,3 @@
-import { PubSub } from 'graphql-subscriptions';
 import * as Redis from 'ioredis';
 
 
