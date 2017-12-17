@@ -9,7 +9,7 @@
 		"dev": "nodemon"
 	},
 	"dependencies": {
-		"@jokio/graphql": "^0.1.4",
+		"@jokio/graphql": "^0.1.5",
 		"ioredis": "^3.2.2"
 	},
 	"devDependencies": {

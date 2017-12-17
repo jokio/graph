@@ -7,7 +7,7 @@ import social from './modules/social';
 import user from './modules/user';
 
 
-const remtoeSchemaUrls = [
+const remoteSchemaUrls = [
 	// 'https://graph.jok.io/'
 ];
 
@@ -32,7 +32,7 @@ const {
 
 const config: RunProps = {
 	modules,
-	remtoeSchemaUrls,
+	remoteSchemaUrls,
 	apiUrls,
 	port,
 	subscriptionEndpoint,
