@@ -1,4 +1,4 @@
-import GraphQL, { RunProps } from './@jokio/graphql';
+import GraphQL, { RunProps } from '@jokio/graphql';
 import Redis from './redis';
 
 import joker from './modules/joker';
