@@ -1,6 +1,7 @@
 import { PubSub } from "graphql-subscriptions/dist/pubsub";
 import { clearInterval } from "timers";
 import * as usage from 'usage';
+import { Resolvers, Context } from "../types";
 
 export const SYSTEM_INFO_EVENT = 'SystemInfoEvent';
 
@@ -33,13 +34,12 @@ type ServerUpTime {
 	inHour: Float
 	inDay: Float
 }
-
 `
 
 const startTime = Date.now();
 let realtimeServerInfoHandler = null;
 
-export const resolvers = {
+export const resolvers: Resolvers<Context> = {
 	Query: {
 		serverInfo: async () => await getServerInfo()
 	},
@@ -55,6 +55,8 @@ export const resolvers = {
 					})
 				, interval
 			);
+
+			return true;
 		},
 
 		stopRealtimeServerInfo: () => clearInterval(realtimeServerInfoHandler),
@@ -62,7 +64,7 @@ export const resolvers = {
 
 	Subscription: {
 		serverInfo: {
-			subscribe: (obj, props, { pubsub }: { pubsub: PubSub }) =>
+			subscribe: (obj, props, { pubsub, token }) =>
 				pubsub.asyncIterator(SYSTEM_INFO_EVENT)
 		}
 	}

@@ -1,5 +1,6 @@
+import { Resolvers } from "../@jokio/graphql";
+import { Context } from "../context";
 import { Events } from '../redis';
-import { api } from '../api';
 
 export const typeDefs = `
 extend type Query {
@@ -42,20 +43,20 @@ type MusicChannel {
 `;
 
 
-export const resolvers = {
+export const resolvers: Resolvers<Context> = {
 	User: {
-		musicChannels: async (obj, props, { token }) =>
+		musicChannels: async (obj, props, { token, api }) =>
 			await api.get(`/music/channel/list`, { ...props, onlyFavorites: true, token }),
 	},
 	Query: {
-		musicChannels: async (obj, props, { token }) =>
+		musicChannels: async (obj, props, { token, api }) =>
 			await api.get(`/music/channel/list`, { ...props, token }),
 	},
 	Mutation: {
-		musicChannelSetFavorite: async (obj, { id, isFavorite }, { token }) =>
+		musicChannelSetFavorite: async (obj, { id, isFavorite }, { token, api }) =>
 			await api.post(`/music/channel/${id}/${isFavorite ? 'favorite' : 'unfavorite'}`, null, { token }),
 
-		musicChannelSetSource: async (obj, { id, streamUrl }, { token }) =>
+		musicChannelSetSource: async (obj, { id, streamUrl }, { token, api }) =>
 			await api.patch(`/music/channel/${id}/source/${streamUrl}`, null, { token }),
 	},
 	Subscription: {

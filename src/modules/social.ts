@@ -1,3 +1,6 @@
+import { Resolvers } from "../@jokio/graphql";
+import { Context } from "../context";
+
 export const typeDefs = `
 extend type Profile {
 	facebook: FacebookProfile
@@ -8,7 +11,7 @@ type FacebookProfile {
 }
 `
 
-export const resolvers = {
+export const resolvers: Resolvers<Context> = {
 	Profile: {
 		facebook: async (obj, { id = 'me' }, { token }) => ({ fullname: 'Holla Bolla' })
 	},

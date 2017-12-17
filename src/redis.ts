@@ -31,7 +31,6 @@ export function configure({ redisConfig, pubsub }) {
 				pubsub.publish(channel, payload);
 				break;
 		}
-
 	});
 
 	redis.subscribe(Events.MusicChannel.TrackUpdated);

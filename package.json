@@ -1,37 +1,37 @@
 {
-  "name": "@jokio/graph",
-  "version": "0.1.0",
-  "description": "Jok Graph",
-  "main": "dist/server.js",
-  "scripts": {
-    "start": "node dist",
-    "test": "echo 'Everything is awesome!'",
-    "dev": "nodemon"
-  },
-  "dependencies": {
-    "apollo-engine": "0.7.0",
-    "apollo-server-express": "1.3.0",
-    "axios": "^0.17.1",
-    "graphql-tools": "2.12.0",
-    "graphql-yoga": "0.2.3",
-    "ioredis": "3.2.1",
-    "lodash": "4.17.4",
-    "node-fetch": "^1.7.3",
-    "usage": "^0.7.1"
-  },
-  "devDependencies": {
-    "@types/lodash": "4.14.88",
-    "@types/node-fetch": "1.6.7",
-    "dotenv": "^4.0.0",
-    "nodemon": "1.12.4",
-    "ts-node": "4.0.1",
-    "typescript": "2.6.2"
-  },
-  "keywords": [
-    "jok",
-    "graph",
-    "api"
-  ],
-  "author": "Jok Entertainers",
-  "license": "MIT"
+	"name": "@jokio/graph",
+	"version": "0.1.0",
+	"description": "Jok Graph",
+	"main": "dist/server.js",
+	"scripts": {
+		"start": "node dist",
+		"test": "echo 'Everything is awesome!'",
+		"dev": "nodemon"
+	},
+	"dependencies": {
+		"apollo-engine": "0.7.0",
+		"apollo-server-express": "1.3.0",
+		"axios": "^0.17.1",
+		"graphql-tools": "2.12.0",
+		"graphql-yoga": "0.3.0",
+		"ioredis": "3.2.1",
+		"lodash": "4.17.4",
+		"node-fetch": "^1.7.3",
+		"usage": "^0.7.1"
+	},
+	"devDependencies": {
+		"@types/lodash": "4.14.88",
+		"@types/node-fetch": "1.6.7",
+		"dotenv": "^4.0.0",
+		"nodemon": "1.12.4",
+		"ts-node": "4.0.1",
+		"typescript": "2.6.2"
+	},
+	"keywords": [
+		"jok",
+		"graph",
+		"api"
+	],
+	"author": "Jok Entertainers",
+	"license": "MIT"
 }

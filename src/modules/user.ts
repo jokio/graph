@@ -1,9 +1,12 @@
 import { Events } from '../redis';
-import { api } from '../api';
+import { RestAPI, Resolvers } from '../@jokio/graphql';
+import { Context } from '../context';
 
 export const typeDefs = `
 extend type Query {
 	user(id: Int): User
+	token: String
+	userId: String
 }
 
 extend type Mutation {
@@ -39,17 +42,21 @@ type User {
 }
 `
 
-export const resolvers = {
+export const resolvers: Resolvers<Context> = {
 	User: {
 		profile: (obj) => obj,
 	},
 	Query: {
-		user: async (obj, { id = 'me' }, { token }) =>
-			await api.get<any>(`/user/${id}`, { token }).then(userLanguageMap)
+		user: async (obj, { id = 'me' }, { token, api }) =>
+			await api.get(`/user/${id}`, { token }).then(userLanguageMap),
+
+		token: (obj, props, { token }) => token,
+
+		userId: (obj, props, { userId }) => userId,
 	},
 	Mutation: {
-		userLogin: async (obj, props) =>
-			await api.post<string>(`/user/login`, props)
+		userLogin: async (obj, props, { api }) =>
+			await api.post(`/user/login`, props)
 	},
 }
 

@@ -2,7 +2,7 @@ import { request } from 'http';
 import axios from 'axios';
 
 
-export class API {
+export class RestAPI {
 
     constructor(
         private baseUrl,

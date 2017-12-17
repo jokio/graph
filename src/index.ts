@@ -1,4 +1,4 @@
-import GraphqlServer from './@jokio/graphql';
+import GraphQL, { RunProps } from './@jokio/graphql';
 import Redis from './redis';
 
 import joker from './modules/joker';
@@ -7,6 +7,10 @@ import social from './modules/social';
 import user from './modules/user';
 
 
+const remtoeSchemaUrls = [
+	// 'https://graph.jok.io/'
+];
+
 const modules = [
 	user,
 	joker,
@@ -14,23 +18,30 @@ const modules = [
 	social,
 ];
 
-const remtoeSchemaUrls = [
-];
+const apiUrls = {
+	api: 'https://x.jok.io'
+}
+
+const {
+	PORT: port,
+	REDIS_CONFIG: redisConfig,
+	SUBSCRIPTION_URL: subscriptionEndpoint,
+	APOLLO_ENGINE_KEY: apiKey
+} = process.env;
 
 
-const redisConfig = process.env.REDIS_CONFIG;
-
-const config = {
+const config: RunProps = {
 	modules,
 	remtoeSchemaUrls,
-	port: process.env.PORT,
-	subscriptionsEndpoint: process.env.SUBSCRIPTION_URL,
-	engineConfig: {
-		apiKey: process.env.APOLLO_ENGINE_KEY,
-	},
+	apiUrls,
+	port,
+	subscriptionEndpoint,
+	engineConfig: { apiKey },
+	enableAuthentication: false,
+	getUserId: (token, { api }) => api.get<any>(`/user/me`, { token: token }).then(x => x.id),
 };
 
 
-GraphqlServer.run(config)
+GraphQL.run(config)
 	.then(({ pubsub }) => ({ pubsub, redisConfig }))
 	.then(Redis.configure)
