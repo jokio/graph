@@ -17,6 +17,11 @@ deploy:
     app: jokio-graph
     api_key: $HEROKU_API_KEY
     skip_cleanup: true
+  - provider: npm
+    email: ez@jok.io
+    skip_cleanup: true
+    api_key:
+      secure: Sd+0eKT/YRkJxUwU9jBBuwH8O579RF32lX7H0+AD5o9CEWV8wv2QNOpF8/HXiQ9kVfrb/uwRcNQAoRJq+wLr7QuazZgslvvt07MwKkQF2svyJYaqtISEdjkADyyhhO8y7Yt4PNETSb28FK3bM5qNv7vOjpYDEESdHmnGEy24MLMjucGEGs1Qtp+GOeCLDPg+jzSGkyYCWztvdg4GT2eKerUlgR20xAK8/oa4sZelCbE3AeLm2NZnSSgtjQe1vs2Z2R7AmLmFe3stmBGYqXm4b8TlESMXx9oV7PaGrPHxBalhuprjBVgp3Ym0FrZg3BjW+mzJy+I/Ho2hsAC4m+AMt3J4+qadsQrCbLqNOkAd61s5WbGjH2G+fFK9QqOgevZV6/mUFzWSudBvH+jN3BvL2eVnK474EgI/9hTNosu8z0YmJznr3+ptb37+l86nxmV8c9klL6o1r64WRbY/PNtZKQwlUgHc+MIoLYpF0YXoPAW/4hnA6MXmha74WY6C7LKbag44P0CxhX37TeOA+OKAfSBG0vWuW+gkVyVmgJoev8jqONjisJTNzjXIHVLjPoJAFoMliwCgkMoACuJOiuiozCnskDXOfrUfxP/NDw6w9wRW814cRmYenPEjTYCrTfMR+tz2MvCeo+vzKEy1WajCevRsNf3ouVwuW2QAh0KRDIg=
 
 notifications:
   slack:
