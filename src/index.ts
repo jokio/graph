@@ -1,21 +1,19 @@
 import GraphQL, { RunProps } from '@jokio/graphql';
-import Redis from './redis';
 
-import joker from './modules/joker';
-import music from './modules/music';
-import social from './modules/social';
-import user from './modules/user';
+import Redis from './redis';
+import Music from './modules/music';
+import Social from './modules/social';
+import User from './modules/user';
 
 
 const remoteSchemaUrls = [
-	// 'https://graph.jok.io/'
+	// 'https://graph.jok.ge/'
 ];
 
 const modules = [
-	user,
-	joker,
-	music,
-	social,
+	User,
+	Music,
+	Social,
 ];
 
 const apiUrls = {
